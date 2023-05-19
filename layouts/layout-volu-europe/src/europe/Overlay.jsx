@@ -5,7 +5,7 @@ import Pick from "./Pick";
 import css from './style/index.module.scss';
 import Ban from "./Ban";
 
-import logo from '../assets/Logo_Itemania_2019.png';
+import logo from '../assets/LCL.png';
 
 export default class Overlay extends React.Component {
     state = {
@@ -84,6 +84,11 @@ export default class Overlay extends React.Component {
                 {Object.keys(state).length !== 0 &&
                 <div className={cx(css.ChampSelect)}>
                     {!state.leagueConnected && <div className={cx(css.infoBox)}>Not connected to client!</div> }
+                    <div className={cx(css.LineTimer, {
+                                [css.Timer60]: state.state === '' && !state.newState,
+                                [css.Timer30]: !(state.state === '') && !state.newState,
+                                [css.Timer30Rev]: state.newState,
+                            })}></div>
                     <div className={cx(css.MiddleBox)}>
                         <div className={cx(css.Logo)}>
                             <img src={logo} alt="" />
@@ -98,13 +103,13 @@ export default class Overlay extends React.Component {
                         })}>
                             <div className={cx(css.Background, css.Blue)} />
                             <div className={cx(css.Background, css.Red)} />
-                            {state.timer < 100 && <div className={cx(css.TimerChars)}>
+                            {/* {state.timer < 100 && <div className={cx(css.TimerChars)}>
                                 {state.timer.toString().split('').map((char, idx) => <div key={`div-${idx}`}
                                     className={cx(css.TimerChar)}>{char}</div>)}
                             </div>}
                             {state.timer >= 100 && <div className={cx(css.TimerChars)}>
                                 {state.timer}
-                            </div>}
+                            </div>} */}
                         </div>
                     </div>
                     {renderTeam(css.TeamBlue, config.frontend.blueTeam, state.blueTeam)}

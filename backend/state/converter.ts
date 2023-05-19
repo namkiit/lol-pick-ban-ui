@@ -4,6 +4,7 @@ import DataProviderService from '../data/DataProviderService';
 import DataDragon from '../data/league/DataDragon';
 import {CurrentState} from '../data/CurrentState';
 import RecordingDatapoint from '../recording/RecordingDatapoint';
+import State from './State';
 
 const convertTeam = (kwargs: { team: Array<Cell>; actions: Array<Action>; dataProvider: DataProviderService; ddragon: DataDragon }): Team => {
   const newTeam = new Team();
@@ -115,7 +116,7 @@ const convertStateName = (actions: Array<Action>) => {
   }
 };
 
-const convertState = (state: CurrentState, dataProvider: DataProviderService, ddragon: DataDragon): { blueTeam: Team; redTeam: Team; timer: number; state: string } => {
+const convertState = (state: CurrentState, oldState: State, dataProvider: DataProviderService, ddragon: DataDragon): { blueTeam: Team; redTeam: Team; timer: number; state: string } => {
   const lcuSession = state.session;
 
   const currentDate = (state as RecordingDatapoint).time ? new Date((state as RecordingDatapoint).time) : new Date();

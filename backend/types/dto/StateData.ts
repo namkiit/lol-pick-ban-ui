@@ -10,6 +10,8 @@ export class StateData {
   state = "PICK 1";
   config = new Config();
 
+  newState = false;
+
   getCurrentAction() {
     // If either team is active, return none
     if (!this.blueTeam.isActive && !this.redTeam.isActive) {

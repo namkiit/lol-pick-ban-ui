@@ -3,7 +3,7 @@
 body {
     // background: black;
     // font-family: 'Nova Flat', sans-serif;
-    font-family: Amarello;
+    font-family: ESL Legend;
 
     // background: url("https://dotesports-media.nyc3.cdn.digitaloceanspaces.com/wp-content/uploads/2019/06/14131635/LEC-Summer-2019.jpg");
     background-size: cover;
@@ -22,7 +22,7 @@ body {
     .MiddleBox {
         position: absolute;
         color: white;
-        width: var(--box-width);
+        width: 320px;
         height: calc(var(--box-pick-height) + var(--box-ban-height));
 
         bottom: var(--champselect-margin-bot);
@@ -61,6 +61,36 @@ body {
             object-fit: contain;
         }
     }
+
+    .LineTimer {
+        height: var(--timer-line-height);
+        left: 50%;        
+        bottom: calc(var(--box-height) - 1px);
+        transform: translateX(-50%);
+        position: absolute;
+        overflow:hidden;
+        background-image: linear-gradient(to right, var(--color-blue) 0%, var(--color-red) 100%);
+        &.Timer30{
+          animation: timer-in 30s forwards;
+          animation-fill-mode: forwards;  
+        }
+        &.Timer30Rev{
+          width: calc(var(--box-width)*11);
+        }
+        &.Timer60{
+          animation: timer-in 60s backwards;
+          animation-fill-mode: forwards;  
+        }
+      }
+      
+      @keyframes timer-in {
+      0% {
+        width: calc(var(--box-width)*11);;
+      }
+      100% {
+        width: 0;
+      }
+      }
 
     @import "./timer";
     @import "./team";

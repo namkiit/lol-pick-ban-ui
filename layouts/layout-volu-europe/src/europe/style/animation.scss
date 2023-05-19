@@ -1,3 +1,5 @@
+@import "./variables";
+
 .TheAbsoluteVoid {
   * {
     display: none;
@@ -16,6 +18,9 @@
     }
   }
   .Team {
+    opacity: 0;
+  }
+  .LineTimer{
     opacity: 0;
   }
   .Logo, .Patch {
@@ -44,6 +49,9 @@
       animation-timing-function: ease-in;
     }
   }
+  .LineTimer{
+    opacity: 0;
+  }
   .Team {
     &.TeamBlue {
       .Bans {
@@ -63,6 +71,15 @@
   }
 }
 
+@keyframes timerline-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
 @keyframes timer-colors {
   100% {
     left: 0;
@@ -75,6 +92,10 @@
 }
 
 .AnimationBansPick {
+  .LineTimer{
+    opacity: 0;
+  }
+  
   --animation-initial-delay: 0.4s;
   --animation-progress: 0.1745s;
 
