@@ -26,7 +26,7 @@
         border-left: solid var(--color-blue) var(--border-width);
 
         .BanImage.Active::before {
-          background-image: linear-gradient(to left, var(--color-blue) 0%, rgba(0, 0, 0, 0) 50%, var(--color-blue) 100%);
+          background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, var(--color-blue) 100%);
         }
       }
     }
@@ -52,7 +52,7 @@
         border-right: solid var(--color-red) var(--border-width);
 
         .BanImage.Active::before {
-          background-image: linear-gradient(to left, var(--color-red) 0%, rgba(0, 0, 0, 0) 50%, var(--color-red) 100%);
+          background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, var(--color-red) 100%);
         }
       }
     }

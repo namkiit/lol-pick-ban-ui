@@ -18,6 +18,20 @@
       border: none;
     }
 
+    .BanImage {
+      height: 100%;
+    }
+
+    .Line {
+      width: 65px;
+      border-bottom: 3px solid white;
+      transform: rotate(45deg);
+      transform-origin: left;
+      position: absolute;
+      top: 18px;
+      left: 17px;
+    }
+
     img {
       width: calc(100% + calc(2 * var(--ban-image-crop)));
       height: 100%;
@@ -34,6 +48,12 @@
       height: 100%;
       opacity: 0.5;
       animation: pulsate-ban 1.5s infinite;
+    }
+
+    .BanImage.Active {
+      .Line {
+        display: none;
+      }
     }
   }
 
