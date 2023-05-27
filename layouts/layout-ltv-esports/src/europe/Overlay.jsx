@@ -52,31 +52,26 @@ export default class Overlay extends React.Component {
             return <div className={cx(css.BansBox)}>{list}</div>;
         };
 
-        const renderTeam = (teamName, teamConfig, teamState) => (
-            <div className={cx(css.Team, teamName)}>
+        const renderTeam = (sideName, teamConfig, teamState) => (
+            <div className={cx(css.Side, sideName)}>
                 <div className={cx(css.Picks)}>
                     {teamState.picks.map((pick, idx) => <Pick key={`pick-${idx}`} config={this.props.config} {...pick} />)}
                 </div>
                 <div className={css.BansWrapper}>
-                    <div className={cx(css.Bans, {[css.WithScore]: config.frontend.scoreEnabled})}>
-                        {teamName === css.TeamBlue && config.frontend.scoreEnabled && <div className={css.TeamScore}>
-                            {teamConfig.score}
-                        </div>}
-                        {teamName === css.TeamRed && renderBans(teamState)}
-                        <div className={cx(css.TeamName, {[css.WithoutCoaches]: !config.frontend.coachesEnabled})}>
-                            {teamConfig.name}
-                            {config.frontend.coachesEnabled && <div className={css.CoachName}>
-                                Coach: {teamConfig.coach}
-                            </div>}
-                        </div>
-                        {teamName === css.TeamBlue && renderBans(teamState)}
-                        {teamName === css.TeamRed && config.frontend.scoreEnabled && <div className={css.TeamScore}>
-                            {teamConfig.score}
-                        </div>}
+                    <div className={cx(css.Bans)}>
+                        {sideName === css.SideRed && renderBans(teamState)}
+                        {sideName === css.SideBlue && renderBans(teamState)}
                     </div>
                 </div>
             </div>
-        );
+        )
+
+        const renderTeamInfo = (teamName, teamConfig) => (
+            <div className={cx(css.Team, teamName)}>
+                <span>{teamConfig.name}</span>
+                <div className={cx(css.Score, {[css.Enable]: config.frontend.scoreEnabled})}>{teamConfig.score}</div>
+            </div>
+        )
 
         return (
             <div className={cx(css.Overlay, css.Europe, this.state.currentAnimationState)} style={{"--color-red": config.frontend.redTeam.color, "--color-blue": config.frontend.blueTeam.color}}>
@@ -93,8 +88,13 @@ export default class Overlay extends React.Component {
                         <div className={cx(css.Logo)}>
                             <img src={logo} alt="" />
                         </div>
-                        <div className={cx(css.Patch)}>
-                            {state.state}
+                        {/* <div className={cx(css.Patch)}>
+                            Patch 13.10
+                        </div> */}
+                        <div className={cx(css.Teams)}>
+                            {renderTeamInfo(css.TeamBlue, config.frontend.blueTeam)}
+                            <div className={cx(css.VS)}>VS</div>
+                            {renderTeamInfo(css.TeamRed, config.frontend.redTeam)}
                         </div>
                         <div className={cx(css.Timer, {
                             [`${css.Red} ${css.Blue}`]: !state.blueTeam.isActive && !state.redTeam.isActive,
@@ -103,17 +103,10 @@ export default class Overlay extends React.Component {
                         })}>
                             <div className={cx(css.Background, css.Blue)} />
                             <div className={cx(css.Background, css.Red)} />
-                            {/* {state.timer < 100 && <div className={cx(css.TimerChars)}>
-                                {state.timer.toString().split('').map((char, idx) => <div key={`div-${idx}`}
-                                    className={cx(css.TimerChar)}>{char}</div>)}
-                            </div>}
-                            {state.timer >= 100 && <div className={cx(css.TimerChars)}>
-                                {state.timer}
-                            </div>} */}
                         </div>
                     </div>
-                    {renderTeam(css.TeamBlue, config.frontend.blueTeam, state.blueTeam)}
-                    {renderTeam(css.TeamRed, config.frontend.redTeam, state.redTeam)}
+                    {renderTeam(css.SideBlue, config.frontend.blueTeam, state.blueTeam)}
+                    {renderTeam(css.SideRed, config.frontend.redTeam, state.redTeam)}
                 </div>}
             </div>
         )

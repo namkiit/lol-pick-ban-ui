@@ -31,7 +31,7 @@
       color: white;
       background-color: black;
       text-align: center;
-      font-size: calc(0.5 * var(--pick-name-height));
+      font-size: calc(0.6 * var(--pick-name-height));
       line-height: var(--pick-name-height);
     }
 
@@ -76,7 +76,7 @@
   }
 }
 
-&.TeamBlue .Picks .Pick {
+&.SideBlue .Picks .Pick {
   &:last-child {
      border-right: solid var(--border-between-color) 1px;
    }
@@ -102,11 +102,11 @@
     span {
       position: relative;
       z-index: 10;
-      font-size: 18px;
+      font-size: 20px;
     }
   }
 }
-&.TeamRed .Picks .Pick {
+&.SideRed .Picks .Pick {
   &:first-child {
     border-left: solid var(--border-between-color) 1px;
   }

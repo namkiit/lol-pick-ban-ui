@@ -7,8 +7,10 @@
 
   --box-team-width: calc(5 * var(--box-width));
   --box-pick-height: 260px;
-  --box-ban-height: 59px;
+  --box-ban-height: 90px;
   --box-ban-spacer: calc(var(--box-ban-height) / 2);
+
+  --timer-line-height: 10px;
 
   --pick-name-height: 30px;
   --pick-image-crop: 8px;

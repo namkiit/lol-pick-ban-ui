@@ -23,7 +23,8 @@ body {
         position: absolute;
         color: white;
         width: 320px;
-        height: calc(var(--box-pick-height) + var(--box-ban-height));
+        // height: calc(var(--box-pick-height) + var(--box-ban-height));
+        height: var(--box-pick-height);
 
         bottom: var(--champselect-margin-bot);
         left: 50%;
@@ -62,10 +63,42 @@ body {
         }
     }
 
+    .Teams {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 35px;
+      z-index: 10;
+      height: 100px;
+
+      .Team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 55px;
+      }
+
+      .VS {
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        font-size: 25px;
+      }
+
+      .Score {
+        font-size: 35px;
+        display: none;
+
+        &.Enable {
+          display: block;
+        }
+      }
+    }
+
     .LineTimer {
         height: var(--timer-line-height);
         left: 50%;        
-        bottom: calc(var(--box-height) - 1px);
+        bottom: calc(var(--box-pick-height) - 1px);
         transform: translateX(-50%);
         position: absolute;
         overflow:hidden;
@@ -75,7 +108,8 @@ body {
           animation-fill-mode: forwards;  
         }
         &.Timer30Rev{
-          width: calc(var(--box-width)*11);
+          // width: calc(var(--box-width)*11);
+          width: 100%;
         }
         &.Timer60{
           animation: timer-in 60s backwards;
@@ -85,7 +119,7 @@ body {
       
       @keyframes timer-in {
       0% {
-        width: calc(var(--box-width)*11);;
+        width: 100%;
       }
       100% {
         width: 0;

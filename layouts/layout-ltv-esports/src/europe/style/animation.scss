@@ -1,3 +1,5 @@
+@import "./variables";
+
 .TheAbsoluteVoid {
   * {
     display: none;
@@ -15,10 +17,13 @@
       opacity: 0;
     }
   }
-  .Team {
+  .Side {
     opacity: 0;
   }
-  .Logo, .Patch {
+  .LineTimer{
+    opacity: 0;
+  }
+  .Logo, .Patch, .Teams {
     opacity: 0;
   }
 }
@@ -44,8 +49,11 @@
       animation-timing-function: ease-in;
     }
   }
-  .Team {
-    &.TeamBlue {
+  .LineTimer{
+    opacity: 0;
+  }
+  .Side {
+    &.SideBlue {
       .Bans {
         transform: translateX(100%);
         animation: bans-fadein 1s forwards;
@@ -53,13 +61,22 @@
       }
     }
 
-    &.TeamRed {
+    &.SideRed {
       .Bans {
         transform: translateX(-100%);
         animation: bans-fadein 1s forwards;
         animation-delay: 0.5s;
       }
     }
+  }
+}
+
+@keyframes timerline-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
   }
 }
 
@@ -75,6 +92,10 @@
 }
 
 .AnimationBansPick {
+  .LineTimer{
+    opacity: 0;
+  }
+  
   --animation-initial-delay: 0.4s;
   --animation-progress: 0.1745s;
 
@@ -82,7 +103,7 @@
     animation: pick-move-up 0.7s forwards;
     top: 100%;
   }
-  .TeamBlue .Pick {
+  .SideBlue .Pick {
     &:nth-child(5) {
       animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 1));
     }
@@ -99,7 +120,7 @@
       animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 5));
     }
   }
-  .TeamRed .Pick {
+  .SideRed .Pick {
     &:nth-child(1) {
       animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 1));
     }
@@ -116,7 +137,7 @@
       animation-delay: calc(var(--animation-initial-delay) + calc(var(--animation-progress) * 5));
     }
   }
-  .Logo, .Patch {
+  .Logo, .Patch, .Teams {
     position: relative;
     top: 100%;
     z-index: -20;

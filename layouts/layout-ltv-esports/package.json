@@ -1,6 +1,6 @@
 {
-  "name": "layout-volu-europe",
-  "version": "0.1.0",
+  "name": "layout-ltv-esports",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

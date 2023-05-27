@@ -3,11 +3,14 @@
   height: var(--box-ban-height);
   display: flex;
   box-sizing: border-box;
+  flex-direction: row-reverse;
 
   .Ban {
     display: block;
-    width: calc(var(--box-ban-height) - calc(2 * var(--border-width)));
-    height: calc(var(--box-ban-height) - calc(2 * var(--border-width)));
+    // width: calc(var(--box-ban-height) - calc(2 * var(--border-width)));
+    // height: calc(var(--box-ban-height) - calc(2 * var(--border-width)));
+    height: 100%;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
     position: relative;
 
@@ -39,7 +42,7 @@
   }
 }
 
-&.TeamBlue .BansBox {
+&.SideRed .BansBox {
   flex-direction: row-reverse;
 }
 
@@ -49,6 +52,7 @@
 
 .BansBox {
   display: flex;
+  margin-bottom: calc(var(--timer-line-height) - 1px);
 }
 
 @keyframes pulsate-ban {
